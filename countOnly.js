@@ -4,14 +4,19 @@ const assertEqual = (actual, expected) => {
   } else {
     return console.log(`🛑🛑🛑 Assertion failed: ${actual} !== ${expected}`);
   }
-};
-const countOnly = function(allItems, itemsToCount) {
+};const countOnly = function(allItems, itemsToCount) {
+
   let results = {};
-  for (const item of allItems) {
+  //loop through each item in firstName object
+  for (const item of allItems) { 
+    //if itemsToCount has a key called Karl,
     if (itemsToCount[item]) {
+      //if results has a key called Karl,
       if (results[item]) {
+        //add 1 to the value of key Karl
         results[item] += 1;
       } else {
+        //if it does not have a key called Karl already, add 1 to that key 
         results[item] = 1;
       }
     }
