@@ -1,4 +1,4 @@
-const countLetters = function(str) {
+const countLetters = (str) => {
   let newStr = str.split(' ').join('');
   let output = {};
   for (const char of newStr) {
@@ -9,4 +9,4 @@ const countLetters = function(str) {
     }
   }
   return output;
-}
+};
