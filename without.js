@@ -20,18 +20,17 @@ const assertArraysEqual = (firstArray, secondArray) => {
 function without (firstArray, secondArray) {
   let result = [];
   for (let i = 0; i < firstArray.length; i++) {
+    let isInBothArrs = false;
     for (let j = 0; j < secondArray.length; j++) {
-      if (firstArray[i] !== secondArray) {
-        result.push(firstArray[i]);
+      if (secondArray[j] === firstArray[i]) {
+        //if values in second array and first array are the same, update boolean to true
+        isInBothArrs = true
       }
+    }
+    //at the end of the loop, if boolean was never updated, none of the values matched. 
+    if (isInBothArrs == false) {
+      result.push(firstArray[i]);
     }
   }
   return result;
 }
-
-//push firstArray 
-//if secondArray is not present in the entire firstArray 
-//not in the array command
-
-console.log(without(["1", "2", "3"], [1, 2, "3"]));
-//output: ["1", "2"]
