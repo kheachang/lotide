@@ -27,7 +27,7 @@ function without (firstArray, secondArray) {
         isInBothArrs = true
       }
     }
-    //at the end of the loop, if boolean was never updated, none of the values matched. 
+    //at the end of each loop for the second array, if boolean was never updated, none of the values matched. 
     if (isInBothArrs == false) {
       result.push(firstArray[i]);
     }
