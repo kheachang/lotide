@@ -1,39 +1,51 @@
-const eqArrays = function(arr1, arr2) {
-  if (arr1.length !== arr2.length){
-    return false
-  }
-  for(let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      return false
-    }
-  }
-  return true
-}
-
-const eqObjects = function(object1, object2) {
-  if (Object.keys(object1).length === Object.keys(object2).length) {
-    for (const key in object1) {
-      for (const otherKey in object2) {
-        if (object1[key] === object2[otherKey]) {
-          return true;
-        }
+const eqArrays = (firstArray, secondArray) => {
+  for (let i = 0; i < firstArray.length; i++) {
+    for (let j = 0; j < secondArray.length; j++) {
+      if (firstArray[i] !== secondArray[i]) {
+        return false;
       }
     }
-  } 
-  return false;
+  }
+  return true;
+}
+const eqObjects = function(object1, object2) {
+  let object1key = Object.keys(object1);
+  let object2key = Object.keys(object2);
+  if (object1key.length !== object2key.length) {
+    // console.log("returning becus length is not equal");
+    return false;
+  }
+  for (const value of object1key) {
+    //test the arrays
+    if (Array.isArray(object1[value]) && Array.isArray(object2[value])) {
+      if (! eqArrays(object1[value], object2[value])) {
+        // console.log('returning becus eqArrays is false');
+        return false
+      }
+    } else {
+      //if not arrays, test the values
+      if (object1[value] !== object2[value]) {
+        // console.log(object1[value])
+        // console.log(object2[value])
+  
+        // console.log('false becus val 1 and 2 not equal', value);
+        return false;
+      }
+    }
+  }
+  return true;
 };
 
 //TESTS
 const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
-console.log('Primitive: ', eqObjects(ab, ba)); // => true
-
+const ba = { b: "1", a: "2" };
 const abc = { a: "1", b: "2", c: "3" };
-console.log('Primitive: ', eqObjects(ab, abc)); // => false
+
+// console.log(eqObjects(ab, ba))
 
 const cd = { c: "1", d: ["2", 3] };
 const dc = { d: ["2", 3], c: "1" };
-console.log('Array: ', eqObjects(cd, dc)); // => true
+console.log(eqObjects(cd, dc)); // => true
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
-console.log('Array: ', eqObjects(cd, cd2)); // => false
+console.log(eqObjects(cd, cd2)); // => false
