@@ -1,20 +1,15 @@
-const assertEqual = (firstArray, secondArray) => {
-  if (firstArray === secondArray) {
-    return console.log(`✅✅✅ Assertion passed: ${firstArray} === ${secondArray}`);
-  } else {
-    return console.log(`🛑🛑🛑 Assertion failed: ${firstArray} !== ${secondArray}`);
+const eqArrays = function(firstArray, arr2) {
+  if (firstArray.length !== arr2.length) {
+    return false;
   }
-};
-
-const eqArrays = (firstArray, secondArray) => {
-  for (let i = 0; i < firstArray.length; i++) {
-    for (let j = 0; j < secondArray.length; j++) {
-      if (firstArray[i] !== secondArray[i]) {
-        return false;
-      }
+  for(let i = 0; i < firstArray.length; i++) {
+    if (firstArray[i] !== arr2[i]) {
+      return false;
     }
   }
   return true;
 }
 
-// console.log(eqArrays([1,5,3], [1,2,3]))
+module.exports = eqArrays;
+
+
