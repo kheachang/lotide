@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
+  "name": "@kheachang/lotide",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "mini clone oflodash",
+  "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
   },
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/kheachang/lotide.git"
   },
-  "author": "",
+  "author": "Khea Chang <kheacyc@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kheachang/lotide/issues"
